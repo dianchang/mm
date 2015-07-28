@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="/static/css/bootstrap.theme.css"/>
     <link rel="stylesheet" href="/static/css/common.css"/>
     <link rel="stylesheet" href="/static/css/macros/_user.css"/>
+    <link rel="stylesheet" href="/static/css/macros/_channel.css">
     <link rel="stylesheet" href="/static/css/layout.css"/>
     {# CSS page #}
     {% block page_css %}{% endblock %}
@@ -59,9 +60,9 @@
                 <li id="nav-index">
                     <a href="{{ url_for('site.index') }}">首页</a>
                 </li>
-                <li id="nav-about">
-                    <a href="{{ url_for('site.about') }}">关于</a>
-                </li>
+                {#                <li id="nav-about">#}
+                {#                    <a href="{{ url_for('site.about') }}">关于</a>#}
+                {#                </li>#}
             </ul>
 
             {#            <form class="navbar-form navbar-left" role="search" method="get" action="#">#}
@@ -78,6 +79,16 @@
 
             <ul class="nav navbar-nav navbar-right">
                 {% if g.user %}
+                    <li id="">
+                        <a href="#">
+                            <span class="fa fa-pencil"></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ url_for('user.channels') }}">
+                            我的频道
+                        </a>
+                    </li>
                     <li id="nav-settings">
                         <a href="#">{{ g.user.name }}</a>
                     </li>
@@ -108,7 +119,7 @@
         </div>
 
         <ul id='links' class="pull-right list-unstyled list-inline">
-            <li><a href="{{ url_for('site.about') }}">About</a></li>
+            <li><a href="{{ url_for('site.about') }}">关于</a></li>
         </ul>
     </div>
 </div>

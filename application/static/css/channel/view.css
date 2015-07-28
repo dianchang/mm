@@ -1,0 +1,22 @@
+#main-wap .header {
+  text-align: center;
+  padding-bottom: 40px;
+  border-bottom: 1px solid #e4e4e4;
+}
+#main-wap .header h3 {
+  margin-bottom: 20px;
+}
+#main-wap .header .creator {
+  font-size: 16px;
+}
+#main-wap .header .creator img {
+  width: 20px;
+  height: 20px;
+  margin-left: 5px;
+}
+#main-wap .header .creator .name {
+  margin-left: 5px;
+}
+#main-wap .header .dc-follow-channel-wap {
+  margin-top: 25px;
+}

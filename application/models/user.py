@@ -6,6 +6,7 @@ from ..utils.uploadsets import avatars
 
 
 class User(db.Model):
+    """用户"""
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(50), unique=True)
     email = db.Column(db.String(50), unique=True)
@@ -29,3 +30,24 @@ class User(db.Model):
 
     def __repr__(self):
         return '<User %s>' % self.name
+
+
+class FollowUser(db.Model):
+    """关注用户"""
+    id = db.Column(db.Integer, primary_key=True)
+    created_at = db.Column(db.DateTime, default=datetime.now)
+
+    follower_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    follower = db.relationship('User', backref=db.backref('followings',
+                                                          lazy='dynamic',
+                                                          order_by='desc(FollowUser.created_at)'),
+                               foreign_keys=[follower_id])
+
+    following_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    following = db.relationship('User', backref=db.backref('followers',
+                                                           lazy='dynamic',
+                                                           order_by='desc(FollowUser.created_at)'),
+                                foreign_keys=[following_id])
+
+    def __repr__(self):
+        return '<FollowUser %s>' % self.id

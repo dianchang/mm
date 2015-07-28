@@ -1,0 +1,7 @@
+{% macro follow_channel_wap(channel) %}
+    <a href="#" class="btn btn-default btn-sm dc-follow-channel-wap" data-id="{{ channel.id }}">
+        <span class="for-follow">关注</span>
+        <span class="divider">|</span>
+        <span class="followers-count">{{ channel.followers.count() }}</span>
+    </a>
+{% endmacro %}

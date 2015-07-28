@@ -6,6 +6,16 @@ from flask.ext.uploads import UploadSet, IMAGES, extension, ALL
 
 # UploadSets
 avatars = UploadSet('avatars', IMAGES)
+images = UploadSet('images', IMAGES)
+
+
+def process_site_image(file_storage):
+    """处理并保存全站通用图片。
+
+    Center clipping, resize and then save the avatar."""
+    image = open_image(file_storage)
+    ext = extension(file_storage.filename)
+    return save_image(image, images, ext)
 
 
 def process_user_avatar(file_storage, upload_set, border):

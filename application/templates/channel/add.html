@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+{% from "macros/_form.html" import vertical_field %}
+
+{% block page_title %}Add{% endblock %}
+{% block page_js %}
+    <script src="/static/js/channel/add.js"></script>{% endblock %}
+{% block page_css %}
+    <link rel="stylesheet" href="/static/css/channel/add.css"/>{% endblock %}
+{% block page_content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-8">
+                <h3 class="no-margin-top">添加频道</h3>
+
+                <form action="" method="post">
+                    {{ form.csrf_token() }}
+
+                    {{ vertical_field(form.name) }}
+
+                    {{ vertical_field(form.tags) }}
+
+                    <button type="submit" class="btn btn-primary">添加</button>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

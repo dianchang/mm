@@ -1,0 +1,36 @@
+#main-wap .channels .channel {
+  margin: 0 35px 35px 0;
+  font-size: 16px;
+  float: left;
+  display: inline-block;
+  vertical-align: top;
+}
+#main-wap .channels .channel img {
+  width: 160px;
+  height: 160px;
+  display: block;
+  margin-bottom: 10px;
+  border-radius: 4px;
+}
+#main-wap .channels .channel .name {
+  display: block;
+  text-align: center;
+  padding: 0 10px;
+  width: 160px;
+}
+#main-wap .channels .add-channel-wap {
+  display: inline-block;
+  vertical-align: top;
+  width: 160px;
+  height: 160px;
+  border: 3px dashed #ccc;
+  text-align: center;
+  color: #ccc;
+  padding-top: 58px;
+  border-radius: 4px;
+  font-size: 30px;
+}
+#main-wap .channels .add-channel-wap:hover {
+  color: #aaa;
+  border-color: #aaa;
+}

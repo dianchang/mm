@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+{% from "macros/_channel.html" import follow_channel_wap %}
+
+{% block page_title %}{{ channel.name }}{% endblock %}
+{% block page_js %}
+    <script src="/static/js/channel/view.js"></script>{% endblock %}
+{% block page_css %}
+    <link rel="stylesheet" href="/static/css/channel/view.css"/>{% endblock %}
+{% block page_content %}
+    <div class="container">
+        <div class="header">
+            <h3>{{ channel.name }}</h3>
+
+            <div class="creator">
+                by
+                <img src="{{ channel.user.avatar_url }}" alt="" class="img-circle">
+                <a class="name" href="{{ url_for('user.profile', uid=channel.user_id) }}">
+                    {{ channel.user.name }}</a>
+            </div>
+
+            {#            {% if not g.user or g.user.id != channel.user_id  %}#}
+            {{ follow_channel_wap(channel) }}
+            {#            {% endif %}#}
+        </div>
+
+        <div class="row">
+            <div class="col-sm-8">
+                <div class="pieces">
+                    {% for piece in channel.pieces %}
+                        <div class="piece">
+
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

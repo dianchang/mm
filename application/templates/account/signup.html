@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
-{% from 'macros/_form.html' import horizontal_field, form_submit %}
+{% from 'macros/_form.html' import vertical_field %}
 
-{% block page_title %}Sign up{% endblock %}
+{% block page_title %}注册{% endblock %}
 {% block page_js %}
     <script src="/static/js/account/signup.js"></script>{% endblock %}
 {% block page_css %}
@@ -10,21 +10,19 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-8">
-                <h1>Sign up</h1>
+                <h3>注册</h3>
 
-                <form method="post" class="form-horizontal" autocomplete="off"
+                <form method="post" autocomplete="off"
                       action="{{ url_for('account.signup') }}">
                     {{ form.csrf_token() }}
 
-                    {{ horizontal_field(form.name) }}
+                    {{ vertical_field(form.name) }}
 
-                    {{ horizontal_field(form.email) }}
+                    {{ vertical_field(form.email) }}
 
-                    {{ horizontal_field(form.password) }}
+                    {{ vertical_field(form.password) }}
 
-                    {{ horizontal_field(form.repassword) }}
-
-                    {{ form_submit('Sign up') }}
+                    <button type="submit" class="btn btn-primary">注册</button>
                 </form>
             </div>
         </div>

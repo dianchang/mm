@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
-{% from 'macros/_form.html' import horizontal_field, form_submit %}
+{% from 'macros/_form.html' import vertical_field, form_submit %}
 
-{% block page_title %}Sign in{% endblock %}
+{% block page_title %}登陆{% endblock %}
 {% block page_js %}
     <script src="/static/js/account/signin.js"></script>{% endblock %}
 {% block page_css %}
@@ -10,16 +10,16 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-8">
-                <h1>Sign in</h1>
+                <h3>登陆</h3>
 
-                <form method="post" class="form-horizontal" action="{{ url_for('account.signin') }}">
+                <form method="post" action="">
                     {{ form.csrf_token() }}
 
-                    {{ horizontal_field(form.email) }}
+                    {{ vertical_field(form.email) }}
 
-                    {{ horizontal_field(form.password) }}
+                    {{ vertical_field(form.password) }}
 
-                    {{ form_submit('Sign in') }}
+                    <button type="submit" class="btn btn-primary">登陆</button>
                 </form>
             </div>
         </div>

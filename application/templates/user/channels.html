@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+
+{% block page_title %}Channels{% endblock %}
+{% block page_js %}
+    <script src="/static/js/user/channels.js"></script>{% endblock %}
+{% block page_css %}
+    <link rel="stylesheet" href="/static/css/user/channels.css"/>{% endblock %}
+{% block page_content %}
+    <div class="container">
+        <h3 class="no-margin-top">我的频道</h3>
+
+        <div class="channels clearfix">
+            {% for channel in channels %}
+                <div class="channel">
+                    <a href="{{ url_for('channel.view', uid=channel.id) }}">
+                        <img src="https://placeholdit.imgix.net/~text?&txt=&w=320&h=320" alt="">
+                    </a>
+                    <a class="name" href="{{ url_for('channel.view', uid=channel.id) }}">{{ channel.name }}</a>
+                </div>
+            {% endfor %}
+
+            <a class="add-channel-wap" href="{{ url_for('channel.add') }}">
+                <span class="fa fa-plus"></span>
+            </a>
+        </div>
+    </div>
+{% endblock %}
