@@ -22,7 +22,7 @@ def add_text():
     form.channel_id.choices = [(c.id, c.name) for c in g.user.channels]
     if form.validate_on_submit():
         piece = Piece(title=form.title.data, content=form.content.data, channel_id=form.channel_id.data,
-                      user_id=g.user.id)
+                      user_id=g.user.id, kind='TEXT')
         db.session.add(piece)
         db.session.commit()
         return redirect(url_for('.view', uid=piece.id))
@@ -35,11 +35,19 @@ def edit_text():
     return render_template('piece/edit_text.html')
 
 
-@bp.route('/piece/add_image')
+@bp.route('/piece/add_image', methods=['GET', 'POST'])
 @UserPermission()
 def add_image():
     """添加图片"""
-    return render_template('piece/add_image.html')
+    form = ImageForm()
+    form.channel_id.choices = [(c.id, c.name) for c in g.user.channels]
+    if form.validate_on_submit():
+        piece = Piece(image=form.image.data, desc=form.desc.data, channel_id=form.channel_id.data, user_id=g.user.id,
+                      kind='IMAGE')
+        db.session.add(piece)
+        db.session.commit()
+        return redirect(url_for('.view', uid=piece.id))
+    return render_template('piece/add_image.html', form=form)
 
 
 @bp.route('/piece/edit_image')
@@ -75,7 +83,9 @@ def edit(uid):
         form = ImageForm(obj=piece)
         form.channel_id.choices = [(c.id, c.name) for c in g.user.channels]
         if form.validate_on_submit():
-            piece.desc = form.desc
+            piece.image = form.image.data
+            piece.desc = form.desc.data
+            piece.channel_id = form.channel_id.data
             db.session.add(piece)
             db.session.commit()
             return redirect(url_for('.view', uid=uid))

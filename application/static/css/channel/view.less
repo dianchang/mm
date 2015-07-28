@@ -39,22 +39,41 @@
     border-bottom: 1px solid @border-color;
     position: relative;
 
-    .title {
-      font-size: 20px;
-      margin-bottom: 15px;
-    }
-
-    .commands {
-      visibility: hidden;
-      position: absolute;
-      right: 0;
-      top: 30px;
-    }
-
-    &:hover {
-      .commands {
-        visibility: visible;
+    &.piece-text {
+      .title {
+        font-size: 20px;
+        margin-bottom: 15px;
       }
+    }
+
+    &.piece-image {
+      img {
+        margin-bottom: 15px;
+      }
+    }
+
+    .other {
+      margin-top: 20px;
+
+      .time {
+        margin-right: 15px;
+      }
+
+      .commands {
+        visibility: hidden;
+
+        a {
+          color: #999;
+
+          &:hover {
+            color: @main-color;
+          }
+        }
+      }
+    }
+
+    &:hover .other .commands {
+      visibility: visible;
     }
   }
 }

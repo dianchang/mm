@@ -1,13 +1,17 @@
 {% extends "layout.html" %}
-{% from "macros/_form.html" import vertical_field %}
+{% from "macros/_piece.html" import image_piece_form %}
 
-{% block page_title %}Edit_Image{% endblock %}
+{% block page_title %}编辑图片{% endblock %}
 {% block page_js %}
     <script src="/static/js/piece/edit_image.js"></script>{% endblock %}
 {% block page_css %}
     <link rel="stylesheet" href="/static/css/piece/edit_image.css"/>{% endblock %}
 {% block page_content %}
     <div class="container">
-        <h1>Edit_Image</h1>
+        <div class="row">
+            <div class="col-sm-8">
+                {{ image_piece_form(form) }}
+            </div>
+        </div>
     </div>
 {% endblock %}

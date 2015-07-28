@@ -25,17 +25,31 @@
 
         <div class="pieces">
             {% for piece in channel.pieces %}
-                <div class="piece">
-                    {% if piece.title %}
-                        <div class="title">{{ piece.title }}</div>
+                <div class="piece piece-{{ piece.kind|lower }}">
+                    {% if piece.kind == 'TEXT' %}
+                        {% if piece.title %}
+                            <div class="title">{{ piece.title }}</div>
+                        {% endif %}
+
+                        <div>{{ piece.content|safe }}</div>
+
+
+                    {% elif piece.kind == 'IMAGE' %}
+                        <img src="{{ piece.image }}" class="img-responsive" alt="">
+
+                        <div class="desc">
+                            {{ piece.desc }}
+                        </div>
                     {% endif %}
 
-                    <div>{{ piece.content|safe }}</div>
+                    <div class="other text-light">
+                        <span class="time">{{ piece.created_at|timesince }}</span>
 
-                    <div class="commands">
-                        <a class="btn-edit" href="{{ url_for('piece.edit', uid=piece.id) }}">
-                            编辑
-                        </a>
+                        <span class="commands">
+                            <a class="btn-edit" href="{{ url_for('piece.edit', uid=piece.id) }}">
+                                编辑
+                            </a>
+                        </span>
                     </div>
                 </div>
             {% endfor %}

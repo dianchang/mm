@@ -1,6 +1,7 @@
 # coding: utf-8
 from datetime import datetime
 from ._base import db
+from ..utils.uploadsets import images
 
 
 class Piece(db.Model):

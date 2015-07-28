@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="/static/css/common.css"/>
     <link rel="stylesheet" href="/static/css/macros/_user.css"/>
     <link rel="stylesheet" href="/static/css/macros/_channel.css">
+    <link rel="stylesheet" href="/static/css/macros/_piece.css">
     <link rel="stylesheet" href="/static/css/layout.css"/>
     <link rel="stylesheet" href="/static/css/libs/simditor.css"/>
     <link rel="stylesheet" href="/static/css/libs/simditor-markdown.css"/>
@@ -65,9 +66,9 @@
 
     <div class="collapse navbar-collapse">
         <ul class="nav navbar-nav">
-            <li id="nav-index">
-                <a href="{{ url_for('site.index') }}">首页</a>
-            </li>
+            {#            <li id="nav-index">#}
+            {#                <a href="{{ url_for('site.index') }}">首页</a>#}
+            {#            </li>#}
             {#                <li id="nav-about">#}
             {#                    <a href="{{ url_for('site.about') }}">关于</a>#}
             {#                </li>#}
@@ -98,7 +99,7 @@
                     </a>
                     <ul class="dropdown-menu">
                         <li><a href="{{ url_for('piece.add_text') }}"><span class="fa fa-font"></span> 文字</a></li>
-                        <li><a href="#"><span class="fa fa-camera"></span> 图片</a></li>
+                        <li><a href="{{ url_for('piece.add_image') }}"><span class="fa fa-camera"></span> 图片</a></li>
                     </ul>
                 </li>
 

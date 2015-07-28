@@ -29,16 +29,28 @@
   border-bottom: 1px solid #e4e4e4;
   position: relative;
 }
-#main-wap .piece .title {
+#main-wap .piece.piece-text .title {
   font-size: 20px;
   margin-bottom: 15px;
 }
-#main-wap .piece .commands {
-  visibility: hidden;
-  position: absolute;
-  right: 0;
-  top: 30px;
+#main-wap .piece.piece-image img {
+  margin-bottom: 15px;
 }
-#main-wap .piece:hover .commands {
+#main-wap .piece .other {
+  margin-top: 20px;
+}
+#main-wap .piece .other .time {
+  margin-right: 15px;
+}
+#main-wap .piece .other .commands {
+  visibility: hidden;
+}
+#main-wap .piece .other .commands a {
+  color: #999;
+}
+#main-wap .piece .other .commands a:hover {
+  color: #18bc9c;
+}
+#main-wap .piece:hover .other .commands {
   visibility: visible;
 }

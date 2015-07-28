@@ -1,7 +1,8 @@
-{% from "macros/_form.html" import vertical_field %}
+{% from "macros/_form.html" import vertical_field, field_errors %}
 
+{# 文字类条目form #}
 {% macro text_piece_form(form) %}
-    <form action="" method="post">
+    <form action="" method="post" class="dc-text-piece-form">
         {{ form.csrf_token() }}
 
         {{ vertical_field(form.title) }}
@@ -9,8 +10,6 @@
         {{ vertical_field(form.content, rows=10) }}
 
         {{ vertical_field(form.channel_id) }}
-
-        <input type="hidden" name="kind" value="TEXT">
 
         <button type="submit" class="btn btn-primary">保存</button>
     </form>
@@ -29,5 +28,64 @@
                 }
             }
         });
+    </script>
+{% endmacro %}
+
+
+{# 图片类条目form #}
+{% macro image_piece_form(form) %}
+    <form action="" method="post" class="dc-image-piece-form">
+        {{ form.csrf_token() }}
+
+        <div class="form-group clearfix">
+            <label for="desc">图片</label>
+
+            <img src="{{ form.image.data or "" }}" alt="">
+            <input type="file">
+
+            <div>
+                <button type="button" class="btn-upload-image btn btn-default btn-xs">上传图片</button>
+            </div>
+
+            {{ form.image() }}
+            {{ field_errors(form.image) }}
+        </div>
+
+        {{ vertical_field(form.desc) }}
+
+        {{ vertical_field(form.channel_id) }}
+
+        <button type="submit" class="btn btn-primary">保存</button>
+    </form>
+
+    <script>
+        (function () {
+            var $form = $('.dc-image-piece-form');
+
+            // 上传话题图片
+            var uploader = simple.uploader({
+                url: urlFor('site.upload_image'),
+                fileKey: 'file',
+                connectionCount: 1,
+                'params': {
+                    token: g.csrfToken
+                }
+            });
+
+            $form.on('click', '.btn-upload-image', function () {
+                $form.find("input[type='file']").click();
+            });
+
+            $form.on('change', "input[type='file']", function () {
+                uploader.upload(this.files);
+            });
+
+            uploader.on('uploadsuccess', function (e, file, response) {
+                if (response.success) {
+                    $form.find('img').attr('src', response.file_path);
+                    $form.find("#image").val(response.file_path);
+                }
+            });
+        })();
     </script>
 {% endmacro %}
