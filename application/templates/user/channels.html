@@ -13,7 +13,7 @@
             {% for channel in channels %}
                 <div class="channel">
                     <a href="{{ url_for('channel.view', uid=channel.id) }}">
-                        <img src="https://placeholdit.imgix.net/~text?&txt=&w=320&h=320" alt="">
+                        <img src="{{ channel.cover_url }}" class="img-rounded" alt="">
                     </a>
                     <a class="name" href="{{ url_for('channel.view', uid=channel.id) }}">{{ channel.name }}</a>
                 </div>

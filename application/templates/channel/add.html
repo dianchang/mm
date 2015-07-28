@@ -1,5 +1,5 @@
 {% extends "layout.html" %}
-{% from "macros/_form.html" import vertical_field %}
+{% from "macros/_channel.html" import channel_form %}
 
 {% block page_title %}Add{% endblock %}
 {% block page_js %}
@@ -12,15 +12,7 @@
             <div class="col-sm-8">
                 <h3 class="no-margin-top">添加频道</h3>
 
-                <form action="" method="post">
-                    {{ form.csrf_token() }}
-
-                    {{ vertical_field(form.name) }}
-
-                    {{ vertical_field(form.tags) }}
-
-                    <button type="submit" class="btn btn-primary">添加</button>
-                </form>
+                {{ channel_form(form) }}
             </div>
         </div>
     </div>

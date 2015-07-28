@@ -1,4 +1,5 @@
 {% extends "layout.html" %}
+{% from "macros/_channel.html" import channel_form %}
 
 {% block page_title %}Edit{% endblock %}
 {% block page_js %}
@@ -7,6 +8,12 @@
     <link rel="stylesheet" href="/static/css/channel/edit.css"/>{% endblock %}
 {% block page_content %}
     <div class="container">
-        <h1>Edit</h1>
+        <div class="row">
+            <div class="col-sm-8">
+                <h3 class="no-margin-top">编辑频道</h3>
+
+                {{ channel_form(form, channel) }}
+            </div>
+        </div>
     </div>
 {% endblock %}

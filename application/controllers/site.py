@@ -27,6 +27,6 @@ def upload_image():
     try:
         filename = process_site_image(request.files['file'])
     except Exception, e:
-        return {'result': False, 'error': e.__repr__()}
+        return {'success': False, 'error': e.__repr__()}
     else:
         return {'success': True, 'file_path': images.url(filename)}

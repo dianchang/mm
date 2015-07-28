@@ -11,7 +11,7 @@ class Channel(db.Model):
     show_order = db.Column(db.Integer, default=0)
     clicks = db.Column(db.Integer, default=0)
     created_at = db.Column(db.DateTime, default=datetime.now)
-    cover = db.Column(db.String(200))
+    cover = db.Column(db.String(200), default='default_channel_cover.png')
 
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     user = db.relationship('User', backref=db.backref('channels',
@@ -20,7 +20,7 @@ class Channel(db.Model):
 
     @property
     def cover_url(self):
-        return images.url(self.cover)
+        return images.url(self.cover) if self.cover else None
 
     def __repr__(self):
         return '<Channel %s>' % self.name

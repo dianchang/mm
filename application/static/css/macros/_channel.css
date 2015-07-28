@@ -2,3 +2,12 @@
   color: #ddd;
   margin: 0 5px;
 }
+.dc-channel-form input[type='file'] {
+  display: none;
+}
+.dc-channel-form img {
+  max-width: 160px;
+  display: block;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}

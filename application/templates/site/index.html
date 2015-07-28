@@ -7,13 +7,25 @@
     <link rel="stylesheet" href="/static/css/site/index.css"/>{% endblock %}
 {% block page_content %}
     <div class="container">
-        {#        <div class="new-piece-kind-selector media">#}
-        {#            <div class="item text">#}
-        {#                <span class="fa fa-font"></span>#}
-        {#            </div>#}
-        {#            <div class="item photo">#}
-        {#                <span class="fa fa-font"></span>#}
-        {#            </div>#}
-        {#        </div>#}
+        <div class="row">
+            <div class="col-sm-8">
+
+            </div>
+
+            <div class="col-sm-4">
+                <ul class="list-group">
+                    <a class="list-group-item" href="{{ url_for('user.channels') }}">
+                        我的频道
+                    </a>
+                    <a class="list-group-item" href="#">
+                        我关注的频道
+                    </a>
+                    <a class="list-group-item" href="#">
+                        我的草稿
+                    </a>
+                </ul>
+            </div>
+        </div>
+
     </div>
 {% endblock %}

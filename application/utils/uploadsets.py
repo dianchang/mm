@@ -18,6 +18,17 @@ def process_site_image(file_storage):
     return save_image(image, images, ext)
 
 
+def process_channel_cover(file_storage):
+    """处理并保存频道图标。
+
+    Center clipping, resize and then save the avatar."""
+    image = open_image(file_storage)
+    image = center_crop(image)
+    image = resize_square(image, 640)
+    ext = extension(file_storage.filename)
+    return save_image(image, images, ext)
+
+
 def process_user_avatar(file_storage, upload_set, border):
     """Center clipping, resize and then save the avatar."""
     image = open_image(file_storage)
@@ -60,7 +71,11 @@ def center_crop(image):
 
 
 def resize_square(image, border):
-    return image.resize((border, border), Image.ANTIALIAS)
+    w, h = image.size
+    if w < border:
+        return image.resize((border, border), Image.ANTIALIAS)
+    else:
+        return image
 
 
 def random_filename():

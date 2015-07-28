@@ -1,3 +1,6 @@
+{% from "macros/_form.html" import vertical_field, field_errors %}
+
+
 {# 关注频道 #}
 {% macro follow_channel_wap(channel) %}
     <a href="#" class="btn btn-default btn-sm dc-follow-channel-wap" data-id="{{ channel.id }}">
@@ -5,4 +8,63 @@
         <span class="divider">|</span>
         <span class="followers-count">{{ channel.followers.count() }}</span>
     </a>
+{% endmacro %}
+
+
+{# 添加 & 编辑频道form #}
+{% macro channel_form(form, channel=None) %}
+    <form action="" method="post" class="dc-channel-form">
+        {{ form.csrf_token() }}
+
+        {{ vertical_field(form.name) }}
+
+        <div class="form-group clearfix">
+            <label for="desc">图标</label>
+
+            <img src="{{ channel.cover_url or "" if channel else "" }}" alt="">
+            <input type="file">
+
+            <div>
+                <button type="button" class="btn-upload-cover btn btn-default btn-xs">上传图片</button>
+            </div>
+
+            {{ form.cover() }}
+            {{ field_errors(form.cover) }}
+        </div>
+
+        {#        {{ vertical_field(form.tags) }}#}
+
+        <button type="submit" class="btn btn-primary">保存</button>
+    </form>
+
+    <script>
+        (function () {
+            var $form = $('.dc-channel-form');
+
+            // 上传频道图标
+            var uploader = simple.uploader({
+                url: urlFor('channel.upload_cover'),
+                fileKey: 'file',
+                connectionCount: 1,
+                'params': {
+                    token: g.csrfToken
+                }
+            });
+
+            $form.on('click', '.btn-upload-cover', function () {
+                $form.find("input[type='file']").click();
+            });
+
+            $form.on('change', "input[type='file']", function () {
+                uploader.upload(this.files);
+            });
+
+            uploader.on('uploadsuccess', function (e, file, response) {
+                if (response.result) {
+                    $form.find('img').attr('src', response.url);
+                    $form.find("#cover").val(response.path);
+                }
+            });
+        })();
+    </script>
 {% endmacro %}
