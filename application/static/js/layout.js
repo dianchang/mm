@@ -3,6 +3,9 @@
     setTimeout(showFlash, 200);
     setTimeout(hideFlash, 2000);
 
+    // 代码高亮
+    hljs.initHighlightingOnLoad();
+
     /**
      * Show flash message.
      */

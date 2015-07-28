@@ -7,11 +7,14 @@
     <link rel="stylesheet" href="/static/css/piece/view.css"/>{% endblock %}
 {% block page_content %}
     <div class="container">
-        <div class=""></div>
-        {% if piece.title %}
-            <h3 class="no-margin-top">{{ piece.title }}</h3>
-        {% endif %}
+        <div class="row">
+            <div class="col-sm-8">
+                {% if piece.title %}
+                    <h3 class="no-margin-top">{{ piece.title }}</h3>
+                {% endif %}
 
-        {{ piece.content|safe }}
+                {{ piece.content|safe }}
+            </div>
+        </div>
     </div>
 {% endblock %}
