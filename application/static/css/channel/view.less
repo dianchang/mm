@@ -1,6 +1,11 @@
 @import "../utils";
 
 #main-wap {
+  .container {
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
   .header {
     text-align: center;
     padding-bottom: 40px;
@@ -26,6 +31,30 @@
 
     .dc-follow-channel-wap {
       margin-top: 25px;
+    }
+  }
+
+  .piece {
+    padding: 30px 0;
+    border-bottom: 1px solid @border-color;
+    position: relative;
+
+    .title {
+      font-size: 20px;
+      margin-bottom: 15px;
+    }
+
+    .commands {
+      visibility: hidden;
+      position: absolute;
+      right: 0;
+      top: 30px;
+    }
+
+    &:hover {
+      .commands {
+        visibility: visible;
+      }
     }
   }
 }

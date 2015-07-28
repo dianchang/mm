@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+
+{% block page_title %}View{% endblock %}
+{% block page_js %}
+    <script src="/static/js/piece/view.js"></script>{% endblock %}
+{% block page_css %}
+    <link rel="stylesheet" href="/static/css/piece/view.css"/>{% endblock %}
+{% block page_content %}
+    <div class="container">
+        {% if piece.title %}
+            <h3 class="no-margin-top">{{ piece.title }}</h3>
+        {% endif %}
+
+        {{ piece.content|safe }}
+    </div>
+{% endblock %}

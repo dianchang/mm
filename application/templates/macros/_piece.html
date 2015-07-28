@@ -1,0 +1,33 @@
+{% from "macros/_form.html" import vertical_field %}
+
+{% macro text_piece_form(form) %}
+    <form action="" method="post">
+        {{ form.csrf_token() }}
+
+        {{ vertical_field(form.title) }}
+
+        {{ vertical_field(form.content, rows=10) }}
+
+        {{ vertical_field(form.channel_id) }}
+
+        <input type="hidden" name="kind" value="TEXT">
+
+        <button type="submit" class="btn btn-primary">保存</button>
+    </form>
+
+    <script>
+        var contentEditor = new Simditor({
+            textarea: $("textarea[name='content']"),
+            toolbar: ['bold', 'italic', 'underline', 'ol', 'ul', 'blockquote', 'code', 'link', 'image', 'markdown'],
+            upload: {
+                url: urlFor('site.upload_image'),
+                fileKey: 'file',
+                connectionCount: 1,
+                leaveConfirm: '正在上传文件，如果离开上传会自动取消',
+                params: {
+                    token: g.csrfToken
+                }
+            }
+        });
+    </script>
+{% endmacro %}

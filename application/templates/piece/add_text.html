@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+{% from "macros/_form.html" import vertical_field %}
+{% from "macros/_piece.html" import text_piece_form %}
+
+{% block page_title %}添加文字{% endblock %}
+{% block page_js %}
+    <script src="/static/js/piece/add_text.js"></script>{% endblock %}
+{% block page_css %}
+    <link rel="stylesheet" href="/static/css/piece/add_text.css"/>{% endblock %}
+{% block page_content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-8">
+                {{ text_piece_form(form) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}

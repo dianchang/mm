@@ -1,7 +1,13 @@
 @import "utils";
 
 body {
+  margin-bottom: 50px;
+}
 
+.container {
+  @media (min-width: 1200px) {
+    width: 970px;
+  }
 }
 
 h3 {
@@ -11,4 +17,25 @@ h3 {
 
 .navbar {
   margin-bottom: 40px;
+}
+
+.navbar-nav > li > .dropdown-menu {
+  & > li > a {
+    padding: 10px 20px;
+  }
+}
+
+.navbar-right {
+  @media (min-width: 768px) {
+    margin-right: 0;
+  }
+}
+
+.media {
+  margin-top: 0;
+}
+
+.simditor {
+  border: 2px solid #dce4ec !important;
+  border-radius: 4px;
 }

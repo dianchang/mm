@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+{% from "macros/_piece.html" import text_piece_form %}
+
+{% block page_title %}编辑{% endblock %}
+{% block page_js %}
+    <script src="/static/js/piece/edit_text.js"></script>{% endblock %}
+{% block page_css %}
+    <link rel="stylesheet" href="/static/css/piece/edit_text.css"/>{% endblock %}
+{% block page_content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-8">
+                {{ text_piece_form(form) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}

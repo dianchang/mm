@@ -3,7 +3,7 @@ html {
   min-height: 100%;
 }
 body {
-  margin-bottom: 60px;
+  margin-bottom: 200px;
 }
 .flash-message {
   background-color: #3fa7cb;
@@ -28,6 +28,9 @@ body {
 .page-account-signup #nav-signup a {
   color: #555;
   background-color: #e7e7e7;
+}
+.navbar .dropdown-menu .fa {
+  width: 25px;
 }
 .navbar-form {
   margin: 10px 0;

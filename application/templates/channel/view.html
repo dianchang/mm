@@ -23,16 +23,22 @@
             {#            {% endif %}#}
         </div>
 
-        <div class="row">
-            <div class="col-sm-8">
-                <div class="pieces">
-                    {% for piece in channel.pieces %}
-                        <div class="piece">
+        <div class="pieces">
+            {% for piece in channel.pieces %}
+                <div class="piece">
+                    {% if piece.title %}
+                        <div class="title">{{ piece.title }}</div>
+                    {% endif %}
 
-                        </div>
-                    {% endfor %}
+                    <div>{{ piece.content|safe }}</div>
+
+                    <div class="commands">
+                        <a class="btn-edit" href="{{ url_for('piece.edit', uid=piece.id) }}">
+                            编辑
+                        </a>
+                    </div>
                 </div>
-            </div>
+            {% endfor %}
         </div>
     </div>
 {% endblock %}
