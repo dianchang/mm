@@ -7,7 +7,7 @@ from application import create_app
 from application.models import db
 
 # Used by app debug & livereload
-PORT = 5000
+PORT = 3000
 
 app = create_app()
 manager = Manager(app)
