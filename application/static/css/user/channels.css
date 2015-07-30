@@ -1,9 +1,11 @@
 #main-wap .channels .channel {
   margin: 0 35px 35px 0;
-  font-size: 16px;
   float: left;
-  display: inline-block;
-  vertical-align: top;
+  border: 1px solid #e4e4e4;
+  width: 360px;
+  height: 105px;
+  padding: 18px 20px 0 20px;
+  cursor: pointer;
 }
 #main-wap .channels .channel img {
   width: 160px;
@@ -14,20 +16,29 @@
 }
 #main-wap .channels .channel .name {
   display: block;
-  text-align: center;
-  padding: 0 10px;
-  width: 160px;
+  color: #333;
+  font-size: 20px;
+  text-decoration: none;
+  margin-bottom: 15px;
+}
+#main-wap .channels .channel .name:hover {
+  color: #18bc9c;
+}
+#main-wap .channels .channel .meta {
+  color: #999;
+}
+#main-wap .channels .channel:hover {
+  background-color: #f8f8f8;
 }
 #main-wap .channels .add-channel-wap {
   display: inline-block;
   vertical-align: top;
-  width: 160px;
-  height: 160px;
+  width: 360px;
+  height: 105px;
   border: 3px dashed #ccc;
   text-align: center;
   color: #ccc;
-  padding-top: 58px;
-  border-radius: 4px;
+  padding-top: 28px;
   font-size: 30px;
 }
 #main-wap .channels .add-channel-wap:hover {

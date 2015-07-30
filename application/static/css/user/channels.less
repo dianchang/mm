@@ -4,10 +4,15 @@
   .channels {
     .channel {
       margin: 0 35px 35px 0;
-      font-size: 16px;
+      //font-size: 16px;
       float: left;
-      display: inline-block;
-      vertical-align: top;
+      //display: inline-block;
+      //vertical-align: top;
+      border: 1px solid @border-color;
+      width: 360px;
+      height: 105px;
+      padding: 18px 20px 0 20px;
+      cursor: pointer;
 
       img {
         width: 160px;
@@ -19,22 +24,36 @@
 
       .name {
         display: block;
-        text-align: center;
-        padding: 0 10px;
-        width: 160px;
+        //padding: 0 10px;
+        color: #333;
+        font-size: 20px;
+        text-decoration: none;
+        margin-bottom: 15px;
+
+        &:hover {
+          color: @main-color;
+        }
+      }
+
+      .meta {
+        color: #999;
+      }
+
+      &:hover {
+        background-color: #f8f8f8;
       }
     }
 
     .add-channel-wap {
       display: inline-block;
       vertical-align: top;
-      width: 160px;
-      height: 160px;
+      width: 360px;
+      height: 105px;
       border: 3px dashed #ccc;
       text-align: center;
       color: #ccc;
-      padding-top: 58px;
-      border-radius: 4px;
+      padding-top: 28px;
+      //border-radius: 4px;
       font-size: 30px;
 
       &:hover {

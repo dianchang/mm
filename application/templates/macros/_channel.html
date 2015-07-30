@@ -18,19 +18,19 @@
 
         {{ vertical_field(form.name) }}
 
-        <div class="form-group clearfix">
-            <label for="desc">图标</label>
-
-            <img src="{{ channel.cover_url or "" if channel else "" }}" alt="">
-            <input type="file">
-
-            <div>
-                <button type="button" class="btn-upload-cover btn btn-default btn-xs">上传图片</button>
-            </div>
-
-            {{ form.cover() }}
-            {{ field_errors(form.cover) }}
-        </div>
+        {#        <div class="form-group clearfix">#}
+        {#            <label for="desc">图标</label>#}
+        {##}
+        {#            <img src="{{ channel.cover_url or "" if channel else "" }}" alt="">#}
+        {#            <input type="file">#}
+        {##}
+        {#            <div>#}
+        {#                <button type="button" class="btn-upload-cover btn btn-default btn-xs">上传图片</button>#}
+        {#            </div>#}
+        {##}
+        {#            {{ form.cover() }}#}
+        {#            {{ field_errors(form.cover) }}#}
+        {#        </div>#}
 
         {#        {{ vertical_field(form.tags) }}#}
 

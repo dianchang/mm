@@ -15,7 +15,7 @@ def add():
     """创建频道"""
     form = ChannelForm()
     if form.validate_on_submit():
-        channel = Channel(name=form.name.data, user_id=g.user.id, cover=form.cover.data)
+        channel = Channel(name=form.name.data, user_id=g.user.id)
         db.session.add(channel)
         db.session.commit()
         return redirect(url_for('.view', uid=channel.id))
@@ -36,7 +36,7 @@ def edit(uid):
     channel = Channel.query.get_or_404(uid)
     form = ChannelForm(obj=channel)
     if form.validate_on_submit():
-        channel.cover = form.cover.data
+        # channel.cover = form.cover.data
         channel.name = form.name.data
         db.session.add(channel)
         db.session.commit()

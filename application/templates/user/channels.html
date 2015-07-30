@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% block page_title %}Channels{% endblock %}
+{% block page_title %}我的频道{% endblock %}
 {% block page_js %}
     <script src="/static/js/user/channels.js"></script>{% endblock %}
 {% block page_css %}
@@ -11,11 +11,15 @@
 
         <div class="channels clearfix">
             {% for channel in channels %}
-                <div class="channel">
-                    <a href="{{ url_for('channel.view', uid=channel.id) }}">
-                        <img src="{{ channel.cover_url }}" class="img-rounded" alt="">
-                    </a>
+                <div class="channel" data-href="{{ url_for('channel.view', uid=channel.id) }}">
+                    {#                    <a href="{{ url_for('channel.view', uid=channel.id) }}">#}
+                    {#                        <img src="{{ channel.cover_url }}" class="img-rounded" alt="">#}
+                    {#                    </a>#}
                     <a class="name" href="{{ url_for('channel.view', uid=channel.id) }}">{{ channel.name }}</a>
+
+                    <div class="meta">
+                        {{ channel.pieces.count() }} 条目
+                    </div>
                 </div>
             {% endfor %}
 
