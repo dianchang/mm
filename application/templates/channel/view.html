@@ -24,6 +24,11 @@
                             <a class="name" href="{{ url_for('user.profile', uid=channel.user_id) }}">
                                 {{ channel.user.name }}</a>
                         </div>
+
+                        <div class="btn-group btn-group-xs btn-group-switch-content">
+                            <div class="btn btn-default btn-switch-to-simple">简略</div>
+                            <div class="btn btn-default active btn-switch-to-details">详情</div>
+                        </div>
                     </div>
                 </div>
 
@@ -35,13 +40,17 @@
                                     <div class="title">{{ piece.title }}</div>
                                 {% endif %}
 
-                                <div>{{ piece.content|safe }}</div>
+                                <div class="details">
+                                    <div>{{ piece.content|safe }}</div>
+                                </div>
 
                             {% elif piece.kind == 'IMAGE' %}
                                 <img src="{{ piece.image }}" class="img-responsive" alt="">
 
-                                <div class="desc">
-                                    {{ piece.desc }}
+                                <div class="details">
+                                    <div class="desc">
+                                        {{ piece.desc }}
+                                    </div>
                                 </div>
                             {% endif %}
 
