@@ -20,7 +20,7 @@ class Piece(db.Model):
     channel_id = db.Column(db.Integer, db.ForeignKey('channel.id'))
     channel = db.relationship('Channel', backref=db.backref('pieces',
                                                             lazy='dynamic',
-                                                            order_by='asc(Piece.created_at)'))
+                                                            order_by='desc(Piece.created_at)'))
 
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     user = db.relationship('User', backref=db.backref('pieces',

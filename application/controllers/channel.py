@@ -48,7 +48,7 @@ def edit(uid):
 def view(uid):
     """频道主页"""
     channel = Channel.query.get_or_404(uid)
-    pieces = channel.pieces.order_by(Piece.created_at.desc())
+    pieces = channel.pieces
     return render_template('channel/view.html', channel=channel, pieces=pieces)
 
 
