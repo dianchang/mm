@@ -2,7 +2,7 @@
 from flask import Blueprint, render_template, redirect, url_for, g, request
 from ..utils.permissions import UserPermission
 from ..forms.channel import ChannelForm
-from ..models import db, Channel
+from ..models import db, Channel, Piece
 from ..utils.decorators import jsonify
 from ..utils.uploadsets import images, process_channel_cover
 
@@ -48,7 +48,8 @@ def edit(uid):
 def view(uid):
     """频道主页"""
     channel = Channel.query.get_or_404(uid)
-    return render_template('channel/view.html', channel=channel)
+    pieces = channel.pieces.order_by(Piece.created_at.desc())
+    return render_template('channel/view.html', channel=channel, pieces=pieces)
 
 
 @bp.route('/channel/upload_cover', methods=['POST'])

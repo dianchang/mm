@@ -28,7 +28,7 @@
                 </div>
 
                 <div class="pieces">
-                    {% for piece in channel.pieces %}
+                    {% for piece in pieces %}
                         <div class="piece piece-{{ piece.kind|lower }}">
                             {% if piece.kind == 'TEXT' %}
                                 {% if piece.title %}
