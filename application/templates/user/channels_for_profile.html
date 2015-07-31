@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+
+{% block page_title %}Channels_For_Profile{% endblock %}
+{% block page_js %}
+    <script src="/static/js/user/channels_for_profile.js"></script>{% endblock %}
+{% block page_css %}
+    <link rel="stylesheet" href="/static/css/user/channels_for_profile.css"/>{% endblock %}
+{% block page_content %}
+    <div class="container">
+        <div class="header text-center">
+            <img src="{{ user.avatar_url }}" alt="" class="img-circle">
+
+            <div class="name">{{ user.name }}的频道</div>
+        </div>
+
+        <div class="channels-wap">
+            {% for channel in channels %}
+                <div class="channel" data-href="{{ url_for('channel.view', uid=channel.id) }}">
+                    <a class="name" href="{{ url_for('channel.view', uid=channel.id) }}">{{ channel.name }}</a>
+
+                    <div class="meta">
+                        <span class="pieces-count">{{ channel.pieces.count() }} 条目</span>
+
+                        {% if not g.user or g.user.id != channel.user_id %}
+                            {{ follow_channel_wap(channel, small=True) }}
+                        {% endif %}
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

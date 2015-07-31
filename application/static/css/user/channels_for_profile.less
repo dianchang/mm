@@ -1,0 +1,71 @@
+@import "../utils";
+
+#main-wap {
+  .header {
+    border-bottom: 1px solid @border-color;
+    padding-bottom: 30px;
+    margin-bottom: 40px;
+
+    img {
+      width: 100px;
+      height: 100px;
+      display: inline-block;
+      margin-bottom: 15px;
+    }
+
+    .name {
+      font-size: 26px;
+    }
+  }
+
+  .channels-wap {
+    width: 755px;
+    margin: 0 auto;
+
+    .channel {
+      margin: 0 35px 35px 0;
+      float: left;
+      border: 1px solid @border-color;
+      width: 360px;
+      height: 105px;
+      padding: 18px 20px 0 20px;
+      cursor: pointer;
+
+      img {
+        width: 160px;
+        height: 160px;
+        display: block;
+        margin-bottom: 10px;
+        border-radius: 4px;
+      }
+
+      .name {
+        display: block;
+        color: #333;
+        font-size: 20px;
+        text-decoration: none;
+        margin-bottom: 15px;
+
+        &:hover {
+          color: @main-color;
+        }
+      }
+
+      .meta {
+        color: #999;
+
+        .pieces-count {
+          margin-right: 20px;
+        }
+      }
+
+      &:hover {
+        background-color: #f8f8f8;
+      }
+
+      &:nth-child(even) {
+        margin-right: 0;
+      }
+    }
+  }
+}

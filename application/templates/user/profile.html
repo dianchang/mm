@@ -39,7 +39,7 @@
 
                 {% if user.channels.count() > 1 %}
                     <div class="more-channels text-right">
-                        <a href="#">
+                        <a href="{{ url_for('user.channels_for_profile', uid=user.id) }}">
                             全部 <span class="fa fa-angle-right"></span>
                         </a>
                     </div>
