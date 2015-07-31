@@ -1,13 +1,13 @@
-.dc-text-piece-form #channel_id {
+.mm-text-piece-form #channel_id {
   width: auto;
 }
-.dc-image-piece-form #channel_id {
+.mm-image-piece-form #channel_id {
   width: auto;
 }
-.dc-image-piece-form input[type='file'] {
+.mm-image-piece-form input[type='file'] {
   display: none;
 }
-.dc-image-piece-form img {
+.mm-image-piece-form img {
   display: block;
   max-width: 100%;
   max-height: 400px;

@@ -2,7 +2,7 @@
 
 {# 文字类条目form #}
 {% macro text_piece_form(form) %}
-    <form action="" method="post" class="dc-text-piece-form">
+    <form action="" method="post" class="mm-text-piece-form">
         {{ form.csrf_token() }}
 
         {{ vertical_field(form.title) }}
@@ -34,7 +34,7 @@
 
 {# 图片类条目form #}
 {% macro image_piece_form(form) %}
-    <form action="" method="post" class="dc-image-piece-form">
+    <form action="" method="post" class="mm-image-piece-form">
         {{ form.csrf_token() }}
 
         <div class="form-group clearfix">
@@ -60,7 +60,7 @@
 
     <script>
         (function () {
-            var $form = $('.dc-image-piece-form');
+            var $form = $('.mm-image-piece-form');
 
             // 上传话题图片
             var uploader = simple.uploader({

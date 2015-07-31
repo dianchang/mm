@@ -61,7 +61,7 @@
 #main-wap .piece:hover .other .commands {
   visibility: visible;
 }
-#main-wap .commands .dc-follow-channel-wap {
+#main-wap .commands .mm-follow-channel-wap {
   float: right;
 }
 #main-wap .commands .btn-edit-channel {

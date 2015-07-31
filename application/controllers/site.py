@@ -3,6 +3,7 @@ from flask import render_template, Blueprint, request, redirect, url_for, g
 from ..utils.permissions import UserPermission
 from ..utils.decorators import jsonify
 from ..utils.uploadsets import images, process_site_image
+from ..models import Channel
 
 bp = Blueprint('site', __name__)
 
@@ -37,4 +38,5 @@ def upload_image():
 @bp.route('/discover')
 def discover():
     """发现"""
-    return render_template('site/discover.html')
+    channels = Channel.query.limit(30)
+    return render_template('site/discover.html', channels=channels)

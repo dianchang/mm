@@ -1,4 +1,5 @@
 {% extends "layout.html" %}
+{% from "macros/_channel.html" import render_channels %}
 
 {% block page_title %}发现{% endblock %}
 {% block page_js %}
@@ -8,5 +9,7 @@
 {% block page_content %}
     <div class="container">
         <h3 class="no-margin-top">发现</h3>
+
+        {{ render_channels(channels) }}
     </div>
 {% endblock %}

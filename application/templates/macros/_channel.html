@@ -2,8 +2,10 @@
 
 
 {# 关注频道 #}
-{% macro follow_channel_wap(channel) %}
-    <a href="#" class="btn btn-default btn-sm dc-follow-channel-wap" data-id="{{ channel.id }}">
+{% macro follow_channel_wap(channel, small=False) %}
+    <a href="javascript: void(0)"
+       class="btn btn-default {% if small %}btn-xs small{% else %}btn-sm{% endif %} mm-follow-channel-wap"
+       data-id="{{ channel.id }}">
         <span class="for-follow">关注</span>
         <span class="divider">|</span>
         <span class="followers-count">{{ channel.followers.count() }}</span>
@@ -13,7 +15,7 @@
 
 {# 添加 & 编辑频道form #}
 {% macro channel_form(form, channel=None) %}
-    <form action="" method="post" class="dc-channel-form">
+    <form action="" method="post" class="mm-channel-form">
         {{ form.csrf_token() }}
 
         {{ vertical_field(form.name) }}
@@ -39,7 +41,7 @@
 
     <script>
         (function () {
-            var $form = $('.dc-channel-form');
+            var $form = $('.mm-channel-form');
 
             $form.find('#name').focus();
 
@@ -65,6 +67,45 @@
                 if (response.result) {
                     $form.find('img').attr('src', response.url);
                     $form.find("#cover").val(response.path);
+                }
+            });
+        })();
+    </script>
+{% endmacro %}
+
+
+{# 频道 #}
+{% macro render_channels(channels) %}
+    {% for channel in channels %}
+        <div class="mm-channel media" data-href="{{ url_for('channel.view', uid=channel.id) }}">
+            <div class="media-left">
+                <a href="{{ url_for('user.profile', uid=channel.user_id) }}">
+                    <img src="{{ channel.user.avatar_url }}" alt="" class="img-circle channel-creator-avatar">
+                </a>
+            </div>
+
+            <div class="media-body">
+                <a class="name" href="{{ url_for('channel.view', uid=channel.id) }}">{{ channel.name }}</a>
+
+                <div class="meta">
+                    <span class="pieces-count">{{ channel.pieces.count() }} 条目</span>
+
+                    {% if not g.user or g.user.id != channel.user_id %}
+                        {{ follow_channel_wap(channel, small=True) }}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+
+    <script>
+        (function () {
+            // 跳转到channel
+            $(document).on('click', '.mm-channel', function (e) {
+                var href = $(this).data('href');
+
+                if (e.target.tagName !== 'A' && $(e.target).parents('a').length === 0) {
+                    window.location = href;
                 }
             });
         })();

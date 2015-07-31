@@ -1,11 +1,19 @@
-.dc-follow-channel-wap {
+@import "../utils";
+
+.mm-follow-channel-wap {
   .divider {
     color: #ddd;
     margin: 0 5px;
   }
+
+  &.small {
+    .divider {
+      margin: 0 2px;
+    }
+  }
 }
 
-.dc-channel-form {
+.mm-channel-form {
   input[type='file'] {
     display: none;
   }
@@ -15,5 +23,56 @@
     display: block;
     border-radius: 4px;
     margin-bottom: 10px;
+  }
+}
+
+.mm-channel {
+  margin: 0 35px 35px 0;
+  float: left;
+  border: 1px solid @border-color;
+  width: 440px;
+  height: 105px;
+  padding: 18px 20px 0 20px;
+  cursor: pointer;
+
+  &:nth-child(odd) {
+    margin-right: 0;
+  }
+
+  .media-left {
+    padding-right: 20px;
+
+    .channel-creator-avatar {
+      width: 60px;
+      height: 60px;
+    }
+  }
+
+  .name {
+    display: block;
+    color: #333;
+    font-size: 20px;
+    text-decoration: none;
+    margin-bottom: 15px;
+
+    &:hover {
+      color: @main-color;
+    }
+  }
+
+  .meta {
+    color: #999;
+
+    .pieces-count {
+      margin-right: 20px;
+    }
+
+    .mm-follow-channel-wap {
+      float: right;
+    }
+  }
+
+  &:hover {
+    background-color: #f8f8f8;
   }
 }
