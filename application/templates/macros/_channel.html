@@ -41,6 +41,8 @@
         (function () {
             var $form = $('.dc-channel-form');
 
+            $form.find('#name').focus();
+
             // 上传频道图标
             var uploader = simple.uploader({
                 url: urlFor('channel.upload_cover'),
