@@ -91,7 +91,7 @@
 {% endmacro %}
 
 
-{% macro render_piece(piece) %}
+{% macro render_piece(piece, with_channel=False) %}
     <div class="mm-piece piece-{{ piece.kind|lower }}">
         {% if piece.kind == 'TEXT' %}
             {% if piece.title %}
@@ -113,6 +113,11 @@
         {% endif %}
 
         <div class="other">
+            {% if with_channel %}
+                <a class="channel" href="{{ url_for('channel.view', uid=piece.channel_id) }}">
+                    {{ piece.channel.name }}</a>
+            {% endif %}
+
             <span class="time">{{ piece.created_at|timesince }}</span>
 
             {% if g.user and g.user.id == piece.user_id %}
@@ -125,8 +130,8 @@
 {% endmacro %}
 
 
-{% macro render_pieces(pieces) %}
+{% macro render_pieces(pieces, with_channel=False) %}
     {% for piece in pieces %}
-        {{ render_piece(piece) }}
+        {{ render_piece(piece, with_channel=with_channel) }}
     {% endfor %}
 {% endmacro %}

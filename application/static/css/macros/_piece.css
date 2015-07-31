@@ -29,6 +29,13 @@
   color: #aaa;
   margin-top: 20px;
 }
+.mm-piece .other .channel {
+  color: #aaa;
+  margin-right: 15px;
+}
+.mm-piece .other .channel:hover {
+  color: #18bc9c;
+}
 .mm-piece .other .time {
   margin-right: 15px;
 }
