@@ -57,11 +57,10 @@
                             <div class="other">
                                 <span class="time">{{ piece.created_at|timesince }}</span>
 
-                        <span class="commands">
-                            <a class="btn-edit" href="{{ url_for('piece.edit', uid=piece.id) }}">
-                                编辑
-                            </a>
-                        </span>
+                                <span class="commands">
+                                    <a class="btn-edit" href="{{ url_for('piece.edit', uid=piece.id) }}">
+                                        编辑</a>
+                                </span>
                             </div>
                         </div>
                     {% endfor %}
@@ -70,12 +69,32 @@
 
             <div class="col-sm-4">
                 <div class="commands">
-                    {#            {% if not g.user or g.user.id != channel.user_id  %}#}
-                    {{ follow_channel_wap(channel) }}
-                    {#            {% endif %}#}
+                    {% if not g.user or g.user.id != channel.user_id %}
+                        {{ follow_channel_wap(channel) }}
+                    {% endif %}
 
                     <a href="{{ url_for('channel.edit', uid=channel.id) }}"
                        class="btn btn-default btn-sm btn-edit-channel">编辑</a>
+
+                    <div class="dropdown dropdown-add-piece">
+                        <button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true"
+                                aria-expanded="false" class="btn btn-default btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="{{ url_for('piece.add_text', channel_id=channel.id) }}">
+                                    <span class="fa fa-font"></span> 文字
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ url_for('piece.add_text', channel_id=channel.id) }}">
+                                    <span class="fa fa-camera"></span> 图片
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>

@@ -68,3 +68,20 @@
   float: right;
   margin-right: 12px;
 }
+#main-wap .commands .dropdown-add-piece {
+  float: right;
+  margin-right: 12px;
+}
+#main-wap .commands .dropdown-add-piece .dropdown-menu {
+  right: 0;
+  left: auto;
+}
+#main-wap .commands .dropdown-add-piece .dropdown-menu > li > a {
+  padding: 8px 20px;
+}
+#main-wap .commands .dropdown-add-piece .dropdown-menu > li > a .fa {
+  width: 25px;
+}
+#main-wap .commands .dropdown-add-piece .btn .caret {
+  margin-left: 2px;
+}

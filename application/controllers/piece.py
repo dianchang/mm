@@ -1,5 +1,5 @@
 # coding: utf-8
-from flask import Blueprint, render_template, redirect, url_for, g
+from flask import Blueprint, render_template, redirect, url_for, g, request
 from ..utils.permissions import UserPermission
 from ..forms.piece import TextForm, ImageForm
 from ..models import db, Piece
@@ -18,7 +18,10 @@ def add():
 @UserPermission()
 def add_text():
     """添加文字类条目"""
+    channel_id = request.args.get('channel_id', type=int)
     form = TextForm()
+    if channel_id:
+        form.channel_id.data = channel_id
     form.channel_id.choices = [(c.id, c.name) for c in g.user.channels]
     if form.validate_on_submit():
         piece = Piece(title=form.title.data, content=form.content.data, channel_id=form.channel_id.data,
