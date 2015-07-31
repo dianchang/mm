@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 {% from "macros/_piece.html" import render_pieces %}
 
-{% block page_title %}Profile{% endblock %}
+{% block page_title %}{{ user.name }}{% endblock %}
 {% block page_js %}
     <script src="/static/js/user/profile.js"></script>{% endblock %}
 {% block page_css %}
