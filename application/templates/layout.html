@@ -109,12 +109,15 @@
                     <a href="#">发现</a>
                 </li>
 
+                <li>
+                    <a href="{{ url_for('user.channels') }}">我的频道</a>
+                </li>
+
                 <li id="nav-settings" class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         {{ g.user.name }} <span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li><a href="{{ url_for('user.profile', uid=g.user.id) }}">个人主页</a></li>
-                        <li><a href="{{ url_for('user.channels') }}">我的频道</a></li>
                         <li><a href="#">我关注的频道</a></li>
                         <li><a href="{{ url_for('account.signout') }}">登出</a></li>
                     </ul>

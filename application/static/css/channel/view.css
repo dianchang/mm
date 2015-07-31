@@ -43,6 +43,7 @@
   margin-bottom: 15px;
 }
 #main-wap .piece .other {
+  color: #aaa;
   margin-top: 20px;
 }
 #main-wap .piece .other .time {
@@ -52,7 +53,7 @@
   visibility: hidden;
 }
 #main-wap .piece .other .commands a {
-  color: #999;
+  color: #aaa;
 }
 #main-wap .piece .other .commands a:hover {
   color: #18bc9c;
