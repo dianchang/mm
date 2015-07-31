@@ -25,7 +25,7 @@ def add_text():
                       user_id=g.user.id, kind='TEXT')
         db.session.add(piece)
         db.session.commit()
-        return redirect(url_for('.view', uid=piece.id))
+        return redirect(url_for('channel.view', uid=piece.channel_id))
     return render_template('piece/add_text.html', form=form)
 
 
@@ -46,7 +46,7 @@ def add_image():
                       kind='IMAGE')
         db.session.add(piece)
         db.session.commit()
-        return redirect(url_for('.view', uid=piece.id))
+        return redirect(url_for('channel.view', uid=piece.channel_id))
     return render_template('piece/add_image.html', form=form)
 
 
