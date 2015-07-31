@@ -42,7 +42,10 @@ def edit_text():
 @UserPermission()
 def add_image():
     """添加图片"""
+    channel_id = request.args.get('channel_id', type=int)
     form = ImageForm()
+    if channel_id:
+        form.channel_id.data = channel_id
     form.channel_id.choices = [(c.id, c.name) for c in g.user.channels]
     if form.validate_on_submit():
         piece = Piece(image=form.image.data, desc=form.desc.data, channel_id=form.channel_id.data, user_id=g.user.id,
