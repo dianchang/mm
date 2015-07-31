@@ -18,7 +18,12 @@
                     <a class="name" href="{{ url_for('channel.view', uid=channel.id) }}">{{ channel.name }}</a>
 
                     <div class="meta">
-                        {{ channel.pieces.count() }} 条目
+                        <span class="pieces-count">{{ channel.pieces.count() }} 条目</span>
+
+                        {% set followers_count = channel.followers.count() %}
+                        {% if followers_count %}
+                            <span class="followers-count">{{ followers_count }} 关注</span>
+                        {% endif %}
                     </div>
                 </div>
             {% endfor %}

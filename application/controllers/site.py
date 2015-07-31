@@ -1,5 +1,5 @@
 # coding: utf-8
-from flask import render_template, Blueprint, request
+from flask import render_template, Blueprint, request, redirect, url_for, g
 from ..utils.permissions import UserPermission
 from ..utils.decorators import jsonify
 from ..utils.uploadsets import images, process_site_image
@@ -10,6 +10,8 @@ bp = Blueprint('site', __name__)
 @bp.route('/')
 def index():
     """Index page."""
+    if not g.user:
+        return redirect(url_for('.discover'))
     return render_template('site/index.html')
 
 
@@ -30,3 +32,9 @@ def upload_image():
         return {'success': False, 'error': e.__repr__()}
     else:
         return {'success': True, 'file_path': images.url(filename)}
+
+
+@bp.route('/discover')
+def discover():
+    """发现"""
+    return render_template('site/discover.html')

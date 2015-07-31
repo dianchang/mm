@@ -27,6 +27,9 @@
 #main-wap .channels .channel .meta {
   color: #999;
 }
+#main-wap .channels .channel .meta .pieces-count {
+  margin-right: 20px;
+}
 #main-wap .channels .channel:hover {
   background-color: #f8f8f8;
 }
