@@ -19,7 +19,7 @@
                 {{ render_pieces(user.pieces, with_channel=True) }}
             </div>
             <div class="col-sm-4">
-                {#                <div class="sidebar-title">频道<span class="divider">/</span>{{ user.channels.count() }}</div>#}
+                <div class="sidebar-title">频道<span class="divider">/</span>{{ user.channels.count() }}</div>
 
                 <div class="list-group list-group-channels">
                     {% for channel in channels %}
