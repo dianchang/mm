@@ -4,7 +4,7 @@
   .header {
     border-bottom: 1px solid @border-color;
     padding-bottom: 30px;
-    margin-bottom: 10px;
+    margin-bottom: 40px;
 
     img {
       width: 100px;
@@ -18,51 +18,102 @@
     }
   }
 
-  .sidebar-title {
-    font-size: 16px;
-    padding: 30px 0 20px 0;
+  //.sidebar-title {
+  //  font-size: 16px;
+  //  padding: 30px 0 20px 0;
+  //
+  //  .divider {
+  //    margin: 0 6px;
+  //  }
+  //}
+  //
+  //.list-group-channels {
+  //  //padding-top: 30px;
+  //  margin-bottom: 15px;
+  //
+  //  .channel {
+  //    padding: 18px 15px;
+  //    border-top: 1px solid @border-color;
+  //    cursor: pointer;
+  //
+  //    .name {
+  //      font-size: 16px;
+  //      margin-bottom: 8px;
+  //      display: block;
+  //      color: #333;
+  //      text-decoration: none;
+  //
+  //      &:hover {
+  //        color: @main-color;
+  //      }
+  //    }
+  //
+  //    .pieces-count {
+  //      color: #aaa;
+  //    }
+  //
+  //    &:hover {
+  //      background-color: #f8f8f8;
+  //    }
+  //  }
+  //}
+  //
+  //.more-channels a {
+  //  color: #aaa;
+  //
+  //  &:hover {
+  //    color: @main-color;
+  //  }
+  //}
 
-    .divider {
-      margin: 0 6px;
-    }
-  }
-
-  .list-group-channels {
-    //padding-top: 30px;
-    margin-bottom: 15px;
+  .channels-wap {
+    width: 755px;
+    margin: 0 auto;
 
     .channel {
-      padding: 18px 15px;
-      border-top: 1px solid @border-color;
+      margin: 0 35px 35px 0;
+      float: left;
+      border: 1px solid @border-color;
+      width: 360px;
+      height: 105px;
+      padding: 18px 20px 0 20px;
       cursor: pointer;
 
+      img {
+        width: 160px;
+        height: 160px;
+        display: block;
+        margin-bottom: 10px;
+        border-radius: 4px;
+      }
+
       .name {
-        font-size: 16px;
-        margin-bottom: 8px;
         display: block;
         color: #333;
+        font-size: 20px;
         text-decoration: none;
+        margin-bottom: 15px;
 
         &:hover {
           color: @main-color;
         }
       }
 
-      .pieces-count {
-        color: #aaa;
+      .meta {
+        color: #999;
+
+        .pieces-count {
+          margin-right: 20px;
+        }
       }
 
       &:hover {
         background-color: #f8f8f8;
       }
-    }
-  }
 
-  .more-channels a {
-    color: #aaa;
-
-    &:hover {
-      color: @main-color;
+      &:nth-child(even) {
+        margin-right: 0;
+      }
     }
   }
 }

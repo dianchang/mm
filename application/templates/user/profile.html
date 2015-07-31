@@ -14,37 +14,53 @@
             <div class="name">{{ user.name }}</div>
         </div>
 
-        <div class="row">
-            <div class="col-sm-8">
-                {{ render_pieces(user.pieces, with_channel=True) }}
-            </div>
-            <div class="col-sm-4">
-                <div class="sidebar-title">频道<span class="divider">/</span>{{ user.channels.count() }}</div>
+        {#        <div class="row">#}
+        {#            <div class="col-sm-8">#}
+        {#                {{ render_pieces(user.pieces, with_channel=True) }}#}
+        {#            </div>#}
+        {#            <div class="col-sm-4">#}
+        {#                <div class="sidebar-title">频道<span class="divider">/</span>{{ user.channels.count() }}</div>#}
+        {##}
+        {#                <div class="list-group list-group-channels">#}
+        {#                    {% for channel in channels %}#}
+        {#                        <div class="channel list-group-item" data-id="{{ channel.id }}">#}
+        {#                            <a class="name" href="{{ url_for('channel.view', uid=channel.id) }}">{{ channel.name }}</a>#}
+        {##}
+        {#                            <div class="meta">#}
+        {#                                <span class="pieces-count">{{ channel.pieces.count() }} 条目</span>#}
+        {##}
+        {#                                {% if not g.user or g.user.id != channel.user_id %}#}
+        {#                                    {{ follow_channel_wap(channel, small=True) }}#}
+        {#                                {% endif %}#}
+        {#                            </div>#}
+        {#                        </div>#}
+        {#                    {% endfor %}#}
+        {#                </div>#}
+        {##}
+        {#                {% if user.channels.count() > 1 %}#}
+        {#                    <div class="more-channels text-right">#}
+        {#                        <a href="{{ url_for('user.channels_for_profile', uid=user.id) }}">#}
+        {#                            全部 <span class="fa fa-angle-right"></span>#}
+        {#                        </a>#}
+        {#                    </div>#}
+        {#                {% endif %}#}
+        {#            </div>#}
+        {#        </div>#}
 
-                <div class="list-group list-group-channels">
-                    {% for channel in channels %}
-                        <div class="channel list-group-item" data-id="{{ channel.id }}">
-                            <a class="name" href="{{ url_for('channel.view', uid=channel.id) }}">{{ channel.name }}</a>
+        <div class="channels-wap">
+            {% for channel in channels %}
+                <div class="channel" data-href="{{ url_for('channel.view', uid=channel.id) }}">
+                    <a class="name" href="{{ url_for('channel.view', uid=channel.id) }}">{{ channel.name }}</a>
 
-                            <div class="meta">
-                                <span class="pieces-count">{{ channel.pieces.count() }} 条目</span>
+                    <div class="meta">
+                        <span class="pieces-count">{{ channel.pieces.count() }} 条目</span>
 
-                                {% if not g.user or g.user.id != channel.user_id %}
-                                    {{ follow_channel_wap(channel, small=True) }}
-                                {% endif %}
-                            </div>
-                        </div>
-                    {% endfor %}
-                </div>
-
-                {% if user.channels.count() > 1 %}
-                    <div class="more-channels text-right">
-                        <a href="{{ url_for('user.channels_for_profile', uid=user.id) }}">
-                            全部 <span class="fa fa-angle-right"></span>
-                        </a>
+                        {% if not g.user or g.user.id != channel.user_id %}
+                            {{ follow_channel_wap(channel, small=True) }}
+                        {% endif %}
                     </div>
-                {% endif %}
-            </div>
+                </div>
+            {% endfor %}
         </div>
     </div>
 {% endblock %}

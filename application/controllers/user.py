@@ -18,7 +18,7 @@ def channels():
 def profile(uid):
     """用户主页"""
     user = User.query.get_or_404(uid)
-    channels = user.channels.limit(6)
+    channels = user.channels
     return render_template('user/profile.html', user=user, channels=channels)
 
 
