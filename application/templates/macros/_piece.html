@@ -89,3 +89,44 @@
         })();
     </script>
 {% endmacro %}
+
+
+{% macro render_piece(piece) %}
+    <div class="mm-piece piece-{{ piece.kind|lower }}">
+        {% if piece.kind == 'TEXT' %}
+            {% if piece.title %}
+                <div class="title">{{ piece.title }}</div>
+            {% endif %}
+
+            <div class="details">
+                <div>{{ piece.content|safe }}</div>
+            </div>
+
+        {% elif piece.kind == 'IMAGE' %}
+            <img src="{{ piece.image }}" class="img-responsive" alt="">
+
+            <div class="details">
+                <div class="desc">
+                    {{ piece.desc }}
+                </div>
+            </div>
+        {% endif %}
+
+        <div class="other">
+            <span class="time">{{ piece.created_at|timesince }}</span>
+
+            {% if g.user and g.user.id == piece.user_id %}
+                <span class="commands">
+                    <a class="btn-edit" href="{{ url_for('piece.edit', uid=piece.id) }}">编辑</a>
+                </span>
+            {% endif %}
+        </div>
+    </div>
+{% endmacro %}
+
+
+{% macro render_pieces(pieces) %}
+    {% for piece in pieces %}
+        {{ render_piece(piece) }}
+    {% endfor %}
+{% endmacro %}
