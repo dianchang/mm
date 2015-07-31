@@ -25,7 +25,7 @@ class Piece(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     user = db.relationship('User', backref=db.backref('pieces',
                                                       lazy='dynamic',
-                                                      order_by='asc(Piece.created_at)'))
+                                                      order_by='desc(Piece.created_at)'))
 
     def __repr__(self):
         return '<Piece %s>' % self.name
