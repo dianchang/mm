@@ -26,8 +26,12 @@
                         </div>
 
                         <div class="btn-group btn-group-xs btn-group-switch-content">
-                            <div class="btn btn-default btn-switch-to-simple">略</div>
-                            <div class="btn btn-default active btn-switch-to-details">详</div>
+                            <div class="btn btn-default btn-switch-to-simple">
+                                <span class="fa fa-minus"></span>
+                            </div>
+                            <div class="btn btn-default active btn-switch-to-details">
+                                <span class="fa fa-navicon"></span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -75,7 +79,9 @@
 
                     {% if g.user and g.user.id == channel.user_id %}
                         <a href="{{ url_for('channel.edit', uid=channel.id) }}"
-                           class="btn btn-default btn-sm btn-edit-channel">编辑</a>
+                           class="btn btn-default btn-sm btn-edit-channel">
+                            <span class="fa fa-gear"></span>
+                        </a>
 
                         <div class="dropdown dropdown-add-piece">
                             <button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true"

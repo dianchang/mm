@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 {% from "macros/_channel.html" import channel_form %}
 
-{% block page_title %}Edit{% endblock %}
+{% block page_title %}频道设置{% endblock %}
 {% block page_js %}
     <script src="/static/js/channel/edit.js"></script>{% endblock %}
 {% block page_css %}
@@ -10,7 +10,7 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-8">
-                <h3 class="no-margin-top">编辑频道</h3>
+                <h3 class="no-margin-top">频道设置</h3>
 
                 {{ channel_form(form, channel) }}
             </div>
