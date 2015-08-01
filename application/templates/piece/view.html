@@ -9,11 +9,42 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-8">
-                {% if piece.title %}
-                    <h3 class="no-margin-top">{{ piece.title }}</h3>
-                {% endif %}
+                <div class="piece piece-{{ piece.kind|lower }}">
+                    {% if piece.kind == 'TEXT' %}
+                        {% if piece.title %}
+                            <div class="title">{{ piece.title }}</div>
+                        {% endif %}
 
-                {{ piece.content|safe }}
+                        <div class="details">
+                            <div>{{ piece.content|safe }}</div>
+                        </div>
+
+                    {% elif piece.kind == 'IMAGE' %}
+                        <img src="{{ piece.image }}" class="img-responsive" alt="">
+
+                        <div class="details">
+                            <div class="desc">
+                                {{ piece.desc }}
+                            </div>
+                        </div>
+                    {% endif %}
+
+                    <div class="other">
+                        <a class="channel" href="{{ url_for('channel.view', uid=piece.channel_id) }}">
+                            {{ piece.channel.name }}</a>
+
+                        <span class="time">{{ piece.created_at|timesince }}</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-4">
+                {% if g.user and g.user.id == piece.user_id %}
+                    <div class="commands pull-right">
+                        <a class="btn-edit btn btn-default btn-sm"
+                           href="{{ url_for('piece.edit', uid=piece.id) }}">编辑</a>
+                    </div>
+                {% endif %}
             </div>
         </div>
     </div>

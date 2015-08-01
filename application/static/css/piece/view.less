@@ -1,5 +1,58 @@
 @import "../utils";
 
 #main-wap {
+  .piece {
+    position: relative;
 
+    img {
+      max-width: 100%;
+    }
+
+    &.piece-text {
+      .title {
+        font-size: 20px;
+        margin-bottom: 25px;
+      }
+    }
+
+    &.piece-image {
+      img {
+        margin-bottom: 15px;
+      }
+    }
+
+    .other {
+      color: #aaa;
+      margin-top: 20px;
+
+      .channel {
+        color: #aaa;
+        margin-right: 15px;
+
+        &:hover {
+          color: @main-color;
+        }
+      }
+
+      .time {
+        margin-right: 15px;
+      }
+
+      .commands {
+        visibility: hidden;
+
+        a {
+          color: #aaa;
+
+          &:hover {
+            color: @main-color;
+          }
+        }
+      }
+    }
+
+    &:hover .other .commands {
+      visibility: visible;
+    }
+  }
 }

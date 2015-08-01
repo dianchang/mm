@@ -1,0 +1,39 @@
+#main-wap .piece {
+  position: relative;
+}
+#main-wap .piece img {
+  max-width: 100%;
+}
+#main-wap .piece.piece-text .title {
+  font-size: 20px;
+  margin-bottom: 25px;
+}
+#main-wap .piece.piece-image img {
+  margin-bottom: 15px;
+}
+#main-wap .piece .other {
+  color: #aaa;
+  margin-top: 20px;
+}
+#main-wap .piece .other .channel {
+  color: #aaa;
+  margin-right: 15px;
+}
+#main-wap .piece .other .channel:hover {
+  color: #18bc9c;
+}
+#main-wap .piece .other .time {
+  margin-right: 15px;
+}
+#main-wap .piece .other .commands {
+  visibility: hidden;
+}
+#main-wap .piece .other .commands a {
+  color: #aaa;
+}
+#main-wap .piece .other .commands a:hover {
+  color: #18bc9c;
+}
+#main-wap .piece:hover .other .commands {
+  visibility: visible;
+}
