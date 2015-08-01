@@ -31,3 +31,8 @@ h3 {
 .simditor .simditor-body img {
   max-width: 95%;
 }
+blockquote {
+  font-size: 15px;
+  padding: 10px;
+  margin: 0 0 21px 0;
+}
